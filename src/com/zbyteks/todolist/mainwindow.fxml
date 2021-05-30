@@ -1,0 +1,78 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="mainBorderPane" fx:controller="com.zbyteks.todolist.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <top>
+        <VBox>
+<!--            <MenuBar>-->
+<!--                <Menu text="File">-->
+<!--                    <items>-->
+<!--                        <MenuItem text="New..." onAction="#showNewItemDialog"/>-->
+<!--                        <SeparatorMenuItem/>-->
+<!--                        <MenuItem text="Exit"/>-->
+<!--                    </items>-->
+<!--                </Menu>-->
+<!--            </MenuBar>-->
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add new Todo Item(n)" />
+                        </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="/new-icon.png" />
+                                </ImageView>
+                            </graphic>
+                    </Button>
+                    <Button onAction="#showEditItemDialog">
+                        <tooltip>
+                            <Tooltip text="Edit Todo Item(e)" />
+                        </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="/edit-icon.png" />
+                                </ImageView>
+                            </graphic>
+                    </Button>
+                    <ToggleButton fx:id="filterToggleButton" text="Today's Items" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Toggle to show items due today" />
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="/bolt-icon.png" />
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
+
+        </ListView>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true" editable="false"/>
+            <HBox>
+                <Label text="Due: " style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel" style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
